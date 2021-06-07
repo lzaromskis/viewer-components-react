@@ -104,8 +104,8 @@ const MarkupSettingsPanel = (props: MarkupSettingsPanelProps) => {
     // For now encode color in name...
     // Following marker Id is okay to be same, because it is used as a symbol which can be reused, however the whole
     // function will need to be updated once SVG 2.0 is available where we don't have to struggle for markers.
-    const arrowMarkerId = "ArrowMarker" + length + "x" + width + "-" + color;
-    let marker = SVG("#" + arrowMarkerId) as Marker;
+    const arrowMarkerId = `ArrowMarker${length}x${width}-${color}`;
+    let marker = SVG(`#${arrowMarkerId}`) as Marker;
     if (null === marker) {
       if (MarkupApp.markup) {
         marker = MarkupApp.markup
@@ -116,8 +116,8 @@ const MarkupSettingsPanel = (props: MarkupSettingsPanelProps) => {
         marker.attr("overflow", "visible"); // Don't clip the stroke that is being applied to allow the specified start/end to be used directly while hiding the arrow tail fully under the arrow head...
         marker.attr("refX", length);
         marker.css({
-          stroke: color,
-          fill: color,
+          "stroke": color,
+          "fill": color,
           "stroke-opacity": alphaValue,
           "fill-opacity": alphaValue,
         });
@@ -310,8 +310,8 @@ const MarkupSettingsPanel = (props: MarkupSettingsPanelProps) => {
         ? firstSelectedElement?.get(0)?.node?.style.strokeOpacity
         : firstSelectedElement?.type === "line" &&
           firstSelectedElement?.node.style.opacity
-        ? firstSelectedElement?.node.style.opacity
-        : firstSelectedElement?.node.style.strokeOpacity;
+          ? firstSelectedElement?.node.style.opacity
+          : firstSelectedElement?.node.style.strokeOpacity;
       const strokeWidth = isBoxedTextGType
         ? firstSelectedElement?.get(0)?.node?.style.strokeWidth
         : firstSelectedElement?.node.style.strokeWidth;

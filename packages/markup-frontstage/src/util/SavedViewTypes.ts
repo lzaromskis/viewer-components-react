@@ -3,7 +3,6 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 
-
 /**
  * Color overrides for element ids
  * @deprecated Use MarkupSavedView instead
@@ -73,9 +72,9 @@ export interface SavedViewData {
   /** List of elements to show colorized (green) while default becomes gray */
   nonGrayedElements?: string[];
   /** List of color and transparency overrides */
-  overrides?: OverrideData[];
+  overrides?: OverrideData[]; // eslint-disable-line deprecation/deprecation
   /** model/category overrides */
-  perModelCategoryVisibility?: PerModelCategoryVisibilityProps[];
+  perModelCategoryVisibility?: PerModelCategoryVisibilityProps[]; // eslint-disable-line deprecation/deprecation
   /** Project that contains the iModel that contains the saved view */
   projectId?: string;
   /** Sheet Attachments */
@@ -85,7 +84,7 @@ export interface SavedViewData {
   /** View source Id in iModel */
   sourceId?: string;
   /** Data related to the view (camera angle, extents, flags, etc.) */
-  state?: SavedViewState;
+  state?: SavedViewState; // eslint-disable-line deprecation/deprecation
   /** If the view was created by an user */
   userView?: boolean;
   /** Version */

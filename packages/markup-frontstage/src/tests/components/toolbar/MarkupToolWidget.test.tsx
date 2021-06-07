@@ -69,7 +69,7 @@ describe("Markup Tool Widget testing", () => {
   });
 
   it("should render", () => {
-    //arrange
+    // arrange
     MarkupFrontstage.initialize(new I18N());
     const { queryByTestId } = render(
       <MarkupToolWidget
@@ -77,10 +77,10 @@ describe("Markup Tool Widget testing", () => {
         closeMarkupFrontstageAsync={jest.fn()}
       />
     );
-    //act
+    // act
     const toolWidget = queryByTestId("markup-tool-widget-container");
 
-    //expect
+    // expect
     expect(toolWidget).toBeInTheDocument();
     expect(toolWidget?.firstChild).toHaveClass("markupVerticalToolbar");
   });

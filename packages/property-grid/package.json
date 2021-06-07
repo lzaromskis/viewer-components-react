@@ -26,7 +26,7 @@
     "copy:assets": "cpx \"./src/**/*.scss\" ./lib && cpx \"./public/**/*\" ./lib/public",
     "copy:assets:extension": "cpx \"./src/**/*.scss\" ./lib/extension && cpx \"./public/locales/**/*\" ./lib/extension/locales",
     "cover": "",
-    "lint": "tslint -p . 1>&2",
+    "lint": "eslint -f visualstudio \"./src/**/*.{ts,tsx}\" 1>&2",
     "pseudolocalize": "betools pseudolocalize --englishDir ./public/locales/en --out ./lib/public/locales/en-PSEUDO",
     "test": ""
   },
@@ -40,6 +40,7 @@
     "@bentley/bentleyjs-core": "^2.6.0",
     "@bentley/build-tools": "^2.6.0",
     "@bentley/context-registry-client": "^2.6.0",
+    "@bentley/eslint-plugin": "^2.9.1",
     "@bentley/extension-webpack-tools": "^2.6.0",
     "@bentley/frontend-authorization-client": "^2.6.0",
     "@bentley/geometry-core": "^2.6.0",
@@ -66,12 +67,13 @@
     "@types/react": "~16.9.35",
     "@types/react-dom": "^16.8.0",
     "@types/react-redux": "^7.0.1",
+    "@typescript-eslint/eslint-plugin": "4.11.1",
     "cpx": "^1.5.0",
+    "eslint": "^6.8.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-redux": "^7.2.0",
     "rimraf": "^3.0.2",
-    "tslint": "^5.11.0",
     "typescript": "~3.7.4"
   },
   "peerDependencies": {
@@ -100,5 +102,11 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-redux": "^7.2.0"
+  },
+  "eslintConfig": {
+    "plugins": [
+      "@bentley"
+    ],
+    "extends": "plugin:@bentley/imodeljs-recommended"
   }
 }

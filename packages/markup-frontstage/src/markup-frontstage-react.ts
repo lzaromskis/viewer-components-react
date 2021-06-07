@@ -3,7 +3,6 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 
-
 export * from "./components/ui/MarkupFrontstageProvider";
 export * from "./components/toolbar/MarkupSettingsPanel";
 export * from "./MarkupFrontstage";

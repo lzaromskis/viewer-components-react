@@ -4,9 +4,12 @@
   "description": "React tree component that shows iModel content",
   "keywords": [
     "Bentley",
+    "iTwin",
     "iModel.js",
+    "iTwin.js",
     "iModel Content",
-    "Tree"
+    "Tree",
+    "iTwin"
   ],
   "repository": {
     "type": "git",
@@ -24,7 +27,7 @@
     "clean": "rimraf lib .rush/temp/package-deps*.json",
     "copy:assets": "cpx \"./src/**/*.scss\" ./lib && cpx \"./public/**/*\" ./lib/public",
     "cover": "",
-    "lint": "eslint ./src/**/*.{ts,tsx} 1>&2",
+    "lint": "eslint -f visualstudio \"./src/**/*.{ts,tsx}\" 1>&2",
     "test": ""
   },
   "dependencies": {
@@ -33,6 +36,7 @@
   "devDependencies": {
     "@bentley/bentleyjs-core": "^2.15.2",
     "@bentley/build-tools": "^2.15.2",
+    "@bentley/eslint-plugin": "^2.15.2",
     "@bentley/imodeljs-common": "^2.15.2",
     "@bentley/imodeljs-frontend": "^2.15.2",
     "@bentley/presentation-common": "^2.15.2",
@@ -44,12 +48,12 @@
     "@types/classnames": "^2.2.3",
     "@types/react": "~16.9.35",
     "@types/react-dom": "^16.8.0",
+    "@typescript-eslint/eslint-plugin": "4.11.1",
     "cpx": "^1.5.0",
     "eslint": "^6.8.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "rimraf": "^3.0.2",
-    "tslint": "^5.11.0",
     "typescript": "~3.7.4"
   },
   "peerDependencies": {
@@ -66,6 +70,9 @@
     "react-dom": "^16.8.0"
   },
   "eslintConfig": {
-    "extends": "./node_modules/@bentley/build-tools/.eslintrc.js"
+    "plugins": [
+      "@bentley"
+    ],
+    "extends": "plugin:@bentley/imodeljs-recommended"
   }
 }

@@ -20,7 +20,7 @@ export interface PopupProps extends CommonProps {
   /** Direction (relative to the target) to which the popup is expanded */
   position: RelativePosition;
   /** Fixed position in the viewport */
-  fixedPosition?: { top: number; left: number };
+  fixedPosition?: { top: number, left: number };
   /** target element */
   context: HTMLElement | null;
   /** Function called when the popup is opened */

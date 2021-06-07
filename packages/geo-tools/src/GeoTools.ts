@@ -24,7 +24,7 @@ export class GeoTools {
   }
 
   /** Unregisters the GeoTools internationalization service namespace */
-  public static terminate() {
+  public static terminate(): void {
     if (GeoTools._i18n)
       GeoTools._i18n.unregisterNamespace(GeoTools.i18nNamespace);
     GeoTools._i18n = undefined;

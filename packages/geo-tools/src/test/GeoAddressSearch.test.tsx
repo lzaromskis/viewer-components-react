@@ -14,7 +14,6 @@ import { stubObject } from "ts-sinon";
 import { Point2d, Range2d } from "@bentley/geometry-core";
 import { SpecialKey } from "@bentley/ui-abstract";
 
-
 describe("GeoAddressSearch", () => {
 
   const options = [

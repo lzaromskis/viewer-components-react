@@ -101,11 +101,11 @@ export class MarkupToolWidget extends React.Component<MarkupToolWidgetProps> {
                 isEditable
                   ? this._verticalItems
                   : [
-                      ToolbarHelper.createToolbarItemFromItemDef(
-                        10,
-                        this._closeMarkupToolDef
-                      ),
-                    ]
+                    ToolbarHelper.createToolbarItemFromItemDef(
+                      10,
+                      this._closeMarkupToolDef
+                    ),
+                  ]
               }
               usage={ToolbarUsage.ContentManipulation}
               orientation={ToolbarOrientation.Vertical}

@@ -4,7 +4,9 @@
   "description": "React Geospatial Tools",
   "keywords": [
     "Bentley",
+    "iTwin",
     "iModel.js",
+    "iTwin.js",
     "Geo",
     "Bing",
     "Map",
@@ -24,19 +26,17 @@
   "typings": "lib/geo-tools",
   "scripts": {
     "build": " tsc 1>&2 && npm run copy:assets && npm run pseudolocalize",
-    "build-prod": " tsc -p tsconfig.json 1>&2 && npm run copy:assets",
     "clean": "rimraf lib .rush/temp/package-deps*.json",
     "copy:assets": "cpx \"./src/**/*.{*css,json,svg}\" \"./lib\" && cpx \"./public/**/*\" \"./lib/public\"",
     "cover": "nyc npm test",
-    "lint": "eslint ./src/**/*.{ts,tsx} 1>&2",
+    "lint": "eslint -f visualstudio \"./src/**/*.{ts,tsx}\" 1>&2",
     "pseudolocalize": "betools pseudolocalize --englishDir ./public/locales/en --out ./lib/public/locales/en-PSEUDO",
     "test": "mocha --opts ./mocha.opts \"./lib/test/**/*.test.js\""
   },
   "dependencies": {
     "classnames": "^2.2.5",
     "i18next": "^10.2.2",
-    "react-autosuggest": "^10.0.2",
-    "svg-sprite-loader": "4.2.1"
+    "react-autosuggest": "^10.0.2"
   },
   "devDependencies": {
     "@bentley/bentleyjs-core": "^2.9.1",
@@ -67,6 +67,7 @@
     "@types/react-dom": "^16.8.0",
     "@types/sinon": "^9.0.0",
     "@types/sinon-chai": "^3.2.0",
+    "@typescript-eslint/eslint-plugin": "4.11.1",
     "chai": "^4.1.2",
     "chai-as-promised": "^7",
     "chai-jest-snapshot": "^2.0.0",
@@ -123,6 +124,9 @@
     "lines": 60
   },
   "eslintConfig": {
-    "extends": "./node_modules/@bentley/build-tools/.eslintrc.js"
+    "plugins": [
+      "@bentley"
+    ],
+    "extends": "plugin:@bentley/imodeljs-recommended"
   }
 }

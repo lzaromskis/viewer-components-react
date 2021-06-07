@@ -3,7 +3,6 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 
-
 import {
   Code,
   ColorDef,
@@ -12,7 +11,6 @@ import {
 } from "@bentley/imodeljs-common";
 import {
   AppearanceOverrideProps,
-  DisplayStyle3dState,
   DrawingViewState,
   EmphasizeElements,
   FeatureOverrideType,
@@ -33,7 +31,7 @@ import {
 */
 export const parseFromEmphasizeElements = (
   vp: Viewport,
-  data: SavedViewData
+  data: SavedViewData // eslint-disable-line deprecation/deprecation
 ) => {
   const ee = EmphasizeElements.get(vp);
   if (!ee) {
@@ -96,7 +94,7 @@ const jsonStringify = <T>(args: T): string | undefined => {
  * @param vp the name of the view port.
  * @deprecated Use createViewStateProps instead.
  */
-const create2dViewProps = (vp: Viewport): SavedViewData => {
+const create2dViewProps = (vp: Viewport): SavedViewData => { // eslint-disable-line deprecation/deprecation
   const viewState = vp.view as ViewState2d;
   const categorySelectorProps = viewState.categorySelector?.toJSON();
   const viewDefinitionProps = viewState.toJSON();
@@ -121,11 +119,11 @@ const create2dViewProps = (vp: Viewport): SavedViewData => {
 export const create2DSavedView = (
   vp: Viewport,
   viewStateType: string
-): SavedViewData => {
+): SavedViewData => { // eslint-disable-line deprecation/deprecation
   if (vp.view === undefined) {
     throw new Error("Invalid viewport");
   }
-  const common2dViewProps = create2dViewProps(vp);
+  const common2dViewProps = create2dViewProps(vp); // eslint-disable-line deprecation/deprecation
   if (viewStateType === DrawingViewState.name) {
     return common2dViewProps;
   }
@@ -151,7 +149,7 @@ export const create2DSavedView = (
  * @param vp View port from which view definition to be made
  * @deprecated Use createViewStateProps instead
  */
-export const createSavedViewData = (vp: Viewport): SavedViewData => {
+export const createSavedViewData = (vp: Viewport): SavedViewData => { // eslint-disable-line deprecation/deprecation
   const viewState = vp.view as SpatialViewState;
   if (!viewState) {
     throw new Error("Invalid viewport");
@@ -208,12 +206,12 @@ export const createSavedViewData = (vp: Viewport): SavedViewData => {
   };
 
   // Ensure the skybox is turned off
-  const displayStyle3d = viewState.displayStyle as DisplayStyle3dState;
+  const displayStyle3d = viewState.displayStyle;
   if (displayStyle3d) {
     displayStyle3d.environment.sky.display = false;
   }
 
-  const perModelCategoryVisibility: PerModelCategoryVisibilityProps[] = [];
+  const perModelCategoryVisibility: PerModelCategoryVisibilityProps[] = []; // eslint-disable-line deprecation/deprecation
   vp.perModelCategoryVisibility.forEachOverride(
     (modelId: string, categoryId: string, visible: boolean) => {
       perModelCategoryVisibility.push({ modelId, categoryId, visible });
@@ -221,7 +219,7 @@ export const createSavedViewData = (vp: Viewport): SavedViewData => {
     }
   );
 
-  const data: SavedViewData = {
+  const data: SavedViewData = { // eslint-disable-line deprecation/deprecation
     alwaysDrawn,
     categories,
     changeSetId,
@@ -239,7 +237,7 @@ export const createSavedViewData = (vp: Viewport): SavedViewData => {
   };
 
   // Parse all data from emphasize elements (e.g. colorization, isolates, hidden, emphasize)
-  parseFromEmphasizeElements(vp, data);
+  parseFromEmphasizeElements(vp, data); // eslint-disable-line deprecation/deprecation
 
   return data;
 };
@@ -249,7 +247,7 @@ export const createSavedViewData = (vp: Viewport): SavedViewData => {
  * @param view name of the Saved View.
  * @deprecated Use isSpatialViewProps instead
  */
-export const isSpatialSavedView = (view: SavedViewData) => {
+export const isSpatialSavedView = (view: SavedViewData) => { // eslint-disable-line deprecation/deprecation
   // view.is2d can be undefined for spatialSavedView that are added before 2D saved view feature is added.
   return !view.is2d && "models" in view;
 };
@@ -259,7 +257,7 @@ export const isSpatialSavedView = (view: SavedViewData) => {
  * @param view name fo the Saved View.
  * @deprecated Use isSheetViewProps and isSpatialViewProps instead
  */
-export const isDrawingSavedView = (view: SavedViewData) => {
+export const isDrawingSavedView = (view: SavedViewData) => { // eslint-disable-line deprecation/deprecation
   return view.is2d && !("sheetProps" in view);
 };
 
@@ -268,7 +266,7 @@ export const isDrawingSavedView = (view: SavedViewData) => {
  * @param view name of the Saved View.
  * @deprecated Use isSheetViewProps instead
  */
-export const isSheetSavedView = (view: SavedViewData) => {
+export const isSheetSavedView = (view: SavedViewData) => { // eslint-disable-line deprecation/deprecation
   return view.is2d && "sheetProps" in view;
 };
 
@@ -281,7 +279,7 @@ export const isSheetSavedView = (view: SavedViewData) => {
  */
 export const create2dViewState = async (
   iModelConnection: IModelConnection,
-  savedView: SavedViewData,
+  savedView: SavedViewData, // eslint-disable-line deprecation/deprecation
   viewStateType: string
 ): Promise<ViewState2d> => {
   const props: ViewStateProps = {
@@ -306,6 +304,8 @@ export const create2dViewState = async (
   await viewState.load();
   return viewState;
 };
+
+/* eslint-disable deprecation/deprecation */
 
 /**
  * Creates a markup saved view data from the viewport, it could return a

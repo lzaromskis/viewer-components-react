@@ -2,7 +2,7 @@
 
 Copyright © Bentley Systems, Incorporated. All rights reserved.
 
-This repository contains a set of npm packages that deliver React utilities (Components, hooks) for use in an [iModel.js](imodeljs.org) application.
+This repository contains a set of npm packages that deliver React utilities (Components, hooks) for use in an [iTwin.js](https://itwi.js) application.
 
 With the repository containing many different packages related to iModel.js, each one has it's own folder and README describing the package.
 

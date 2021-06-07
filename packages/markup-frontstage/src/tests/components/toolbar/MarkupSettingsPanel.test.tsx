@@ -30,17 +30,17 @@ jest.mock("@bentley/ui-framework");
 jest.mock("../../../MarkupFrontstage");
 
 describe("MarkupSettingsPanel tool testing", () => {
-  it("should render", async() => {
-    //arrange
+  it("should render", async () => {
+    // arrange
     await MarkupFrontstage.initialize(new I18N());
     const { queryByTestId } = render(
       <MarkupSettingsPanel point={Point.create({ x: 0, y: 0 })} />
     );
 
-    //act
+    // act
     const settingPanel = queryByTestId("markup-settings-tool");
 
-    //assert
+    // assert
     expect(settingPanel).toBeInTheDocument();
   });
 

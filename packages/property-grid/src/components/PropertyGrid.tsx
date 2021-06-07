@@ -86,7 +86,7 @@ interface PropertyGridState {
 export class PropertyGrid extends React.Component<
   PropertyGridProps,
   PropertyGridState
-  > {
+> {
   private static _unifiedSelectionPropertyGrid = propertyGridWithUnifiedSelection(
     VirtualizedPropertyGridWithDataProvider,
   );
@@ -573,16 +573,16 @@ export class PropertyGrid extends React.Component<
             actionButtonRenderers={[this._shareActionButtonRenderer]}
           />
         ) : (
-            <PropertyGrid._unifiedSelectionPropertyGrid
-              orientation={this.props.orientation ?? Orientation.Horizontal}
-              isOrientationFixed={this.props.isOrientationFixed ?? true}
-              dataProvider={this._dataProvider}
-              isPropertyHoverEnabled={true}
-              isPropertySelectionEnabled={true}
-              onPropertyContextMenu={this._onPropertyContextMenu}
-              actionButtonRenderers={[this._shareActionButtonRenderer]}
-            />
-          )}
+          <PropertyGrid._unifiedSelectionPropertyGrid
+            orientation={this.props.orientation ?? Orientation.Horizontal}
+            isOrientationFixed={this.props.isOrientationFixed ?? true}
+            dataProvider={this._dataProvider}
+            isPropertyHoverEnabled={true}
+            isPropertySelectionEnabled={true}
+            onPropertyContextMenu={this._onPropertyContextMenu}
+            actionButtonRenderers={[this._shareActionButtonRenderer]}
+          />
+        )}
         {this._renderContextMenu()}
       </div>
     );

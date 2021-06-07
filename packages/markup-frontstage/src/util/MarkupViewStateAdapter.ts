@@ -3,7 +3,6 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 
-
 import {
   DrawingViewState,
   EmphasizeElements,
@@ -21,18 +20,18 @@ import { MarkupViewStateProps } from "./MarkupViewState";
  * @param vp name of the view port.
  */
 export const createViewStateProps = (vp: Viewport, markup: string): MarkupViewStateProps => {
-  const viewState = vp.view.isSpatialView() ? vp.view as SpatialViewState : vp.view.isDrawingView() ? vp.view as DrawingViewState : vp.view as SheetViewState;
+  const viewState = vp.view.isSpatialView() ? vp.view : vp.view.isDrawingView() ? vp.view : vp.view as SheetViewState;
   const props = viewState.toProps();
   const emphasizedElementsProps = EmphasizeElements.get(vp)?.toJSON(vp);
   const markupViewStateProps: MarkupViewStateProps = {
     ...props,
     emphasizedElementsProps,
-  }
+  };
   if (markup !== undefined) {
     markupViewStateProps.markup = markup;
   }
   return markupViewStateProps;
-}
+};
 
 /**
  * Determines whether or not given view props is spatial.

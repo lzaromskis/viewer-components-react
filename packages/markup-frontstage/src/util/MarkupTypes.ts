@@ -56,7 +56,7 @@ export interface AddMarkupEventArgs {
   /**
    * @deprecated Use markupViewStateProps instead.
    */
-  savedView: SavedViewData;
+  savedView: SavedViewData; // eslint-disable-line deprecation/deprecation
   thumbImage: string;
   markupViewStateProps: MarkupViewStateProps;
 }

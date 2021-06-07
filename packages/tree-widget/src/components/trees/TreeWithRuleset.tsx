@@ -7,14 +7,14 @@ import * as React from "react";
 import { RegisteredRuleset, Ruleset } from "@bentley/presentation-common";
 import {
   IPresentationTreeDataProvider,
+  PresentationTreeDataProvider,
   usePresentationTreeNodeLoader,
   useUnifiedSelectionTreeEventHandler,
-  PresentationTreeDataProvider,
 } from "@bentley/presentation-components";
 import {
-  useVisibleTreeNodes,
-  SelectionMode,
   ControlledTree,
+  SelectionMode,
+  useVisibleTreeNodes,
 } from "@bentley/ui-components";
 import { Presentation } from "@bentley/presentation-frontend";
 import "./TreeWithRulesetTree.scss";
@@ -39,10 +39,7 @@ export interface TreeState {
   dataProvider?: IPresentationTreeDataProvider;
 }
 
-export abstract class TreeWithRuleset<
-  T extends TreeProps,
-  S extends TreeState
-  > extends React.Component<T, S> {
+export abstract class TreeWithRuleset<T extends TreeProps, S extends TreeState> extends React.Component<T, S> {
   private _ruleset?: RegisteredRuleset;
   /** @internal */
   public async componentDidMount() {
@@ -77,10 +74,7 @@ export abstract class TreeWithRuleset<
   };
 }
 
-export class SimpleTreeWithRuleset extends TreeWithRuleset<
-  TreeProps,
-  TreeState
-> {
+export class SimpleTreeWithRuleset extends TreeWithRuleset<TreeProps, TreeState> {
   constructor(props: TreeProps) {
     super(props);
     this.state = {
@@ -99,7 +93,7 @@ export class SimpleTreeWithRuleset extends TreeWithRuleset<
             rulesetId={this.props.ruleSet.id}
             iModel={this.props.imodel}
             dataProvider={dataProvider}
-            pageSize={(dataProvider as PresentationTreeDataProvider).pagingSize}
+            pageSize={(dataProvider).pagingSize}
           />
         </div>
       );

@@ -3,7 +3,6 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 
-
 import {
   EmphasizeElements,
   EmphasizeElementsProps,
@@ -13,7 +12,7 @@ import {
   ViewState,
 } from "@bentley/imodeljs-frontend";
 import { MarkupApp, MarkupSelected } from "@bentley/imodeljs-markup";
-import { WidgetState, UiError } from "@bentley/ui-abstract";
+import { UiError, WidgetState } from "@bentley/ui-abstract";
 import { Point } from "@bentley/ui-core";
 import {
   ConfigurableUiControlConstructor,
@@ -188,7 +187,7 @@ export class MarkupFrontstageProvider extends FrontstageProvider {
     );
     const currentViewPort = contentControl?.viewport;
     const savedView =
-      currentViewPort && createMarkupSavedViewData(currentViewPort);
+      currentViewPort && createMarkupSavedViewData(currentViewPort); // eslint-disable-line deprecation/deprecation
     const markupData = await MarkupApp.stop();
     try {
       if (savedView && currentViewPort && markupData.svg) {
@@ -200,8 +199,8 @@ export class MarkupFrontstageProvider extends FrontstageProvider {
         savedView.emphasizedElementsProps = savedView.is2d
           ? savedView.emphasizedElementsProps
           : this._emphasizedElementsProps
-          ? JSON.stringify(this._emphasizedElementsProps)
-          : undefined;
+            ? JSON.stringify(this._emphasizedElementsProps)
+            : undefined;
         if (markupData.image) {
           this.onAddMarkupEvent.raiseEvent({
             savedView,
@@ -240,8 +239,7 @@ export class MarkupFrontstageProvider extends FrontstageProvider {
       ) {
         throw new UiError(
           MarkupFrontstage.loggerCategory(MarkupFrontstageProvider),
-          `MarkupData.svg is invalid: ${
-            dom.getElementsByTagName("parsererror")[0].textContent
+          `MarkupData.svg is invalid: ${dom.getElementsByTagName("parsererror")[0].textContent
           }`
         );
       } else {
@@ -259,9 +257,9 @@ export class MarkupFrontstageProvider extends FrontstageProvider {
     if (view) {
       const markupData = this._svg
         ? {
-            rect: this._svgRect(this._svg),
-            svg: this._svg,
-          }
+          rect: this._svgRect(this._svg),
+          svg: this._svg,
+        }
         : undefined;
       if (this._emphasizedElementsProps) {
         this._createEmphasizedElements(this._emphasizedElementsProps, view);

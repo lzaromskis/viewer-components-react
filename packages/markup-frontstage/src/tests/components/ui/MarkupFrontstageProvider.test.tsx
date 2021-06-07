@@ -3,8 +3,8 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 import {
-  SpatialViewState,
   RemoteBriefcaseConnection,
+  SpatialViewState,
 } from "@bentley/imodeljs-frontend";
 import { I18N } from "@bentley/imodeljs-i18n";
 
@@ -41,19 +41,19 @@ jest.mock("../../../components/toolbar/MarkupToolWidget");
 
 describe("Markup Tool Widget testing", () => {
   it("should initialize", () => {
-    //arrange
+    // arrange
     MarkupFrontstage.initialize(new I18N());
     const MockViewState = jest.fn<SpatialViewState, []>();
     const MockIModelConnection = jest.fn<RemoteBriefcaseConnection, []>();
 
-    //act
+    // act
     const markupFrontstageProvider = new MarkupFrontstageProvider(
       new MockViewState(),
       new MockIModelConnection(),
       true,
       "mock-configurable-ui-control"
     );
-    //expect
+    // expect
     expect(markupFrontstageProvider).toBeDefined();
   });
 });

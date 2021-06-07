@@ -10,8 +10,8 @@ import {
 } from "@bentley/imodeljs-frontend";
 import {
   CategoryTree,
-  toggleAllCategories,
   getCategories,
+  toggleAllCategories,
 } from "@bentley/ui-framework";
 import { useTreeFilteringState } from "../TreeFilteringState";
 import "./CategoriesTree.scss";
@@ -63,8 +63,8 @@ export function CategoriesTreeComponent(props: CategoriesTreeComponentProps) {
     }
 
     const ids = await getCategories(props.iModel, activeView, filteredProvider);
-    let enabled: string[] = [];
-    let disabled: string[] = [];
+    const enabled: string[] = [];
+    const disabled: string[] = [];
     for (const id of ids) {
       if (activeView.view.viewsCategory(id)) {
         enabled.push(id);
@@ -97,7 +97,7 @@ export function CategoriesTreeComponent(props: CategoriesTreeComponentProps) {
         showAll={showAll}
         hideAll={hideAll}
         invert={invert}
-        />
+      />
       <CategoryTree
         {...props}
         enablePreloading={props.enablePreloading}

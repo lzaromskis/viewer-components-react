@@ -3,7 +3,6 @@
 * See LICENSE.md in the project root for license terms and full copyright notice.
 *--------------------------------------------------------------------------------------------*/
 
-
 import React, { useEffect, useState } from "react";
 import {
   IModelApp,
@@ -12,16 +11,13 @@ import {
   SelectedViewportChangedArgs,
   Viewport,
 } from "@bentley/imodeljs-frontend";
-import { ModelsTree, ClassGroupingOption } from "@bentley/ui-framework";
-import { IconButton } from "../IconButton";
-import { SearchBar } from "../search-bar/SearchBar";
+import { ClassGroupingOption, ModelsTree } from "@bentley/ui-framework";
 import { useTreeFilteringState } from "../TreeFilteringState";
 import "./ModelsTree.scss";
 import {
   GeometricModel3dProps,
   ModelQueryParams,
 } from "@bentley/imodeljs-common";
-import { TreeWidget } from "../../TreeWidget";
 import { TreeHeaderComponent } from "../header/TreeHeader";
 
 export interface ModelTreeProps {
@@ -98,7 +94,7 @@ export const ModelsTreeComponent = (props: ModelTreeProps) => {
   useEffect(() => {
     queryModels(viewport)
       .then((modelInfos: TreeViewModelInfo[]) => {
-        setAvailableModels(modelInfos.map((m: TreeViewModelInfo) => m.id!));
+        setAvailableModels(modelInfos.map((m: TreeViewModelInfo) => m.id));
 
         const models3d = modelInfos
           .filter((m) => {
@@ -106,20 +102,20 @@ export const ModelsTreeComponent = (props: ModelTreeProps) => {
               m.isPlanProjection === false || m.isPlanProjection === undefined
             );
           })
-          .map((m) => m.id!);
+          .map((m) => m.id);
         setAvailable3dModels(models3d);
 
         const models2d = modelInfos
           .filter((m) => {
             return m.isPlanProjection === true;
           })
-          .map((m) => m.id!);
+          .map((m) => m.id);
         setAvailable2dModels(models2d);
       })
       .catch((_e) => {
         setAvailableModels([]);
       });
-  }, [viewport]);
+  }, [viewport, queryModels]);
 
   if (!(iModel && viewport)) {
     return null;
