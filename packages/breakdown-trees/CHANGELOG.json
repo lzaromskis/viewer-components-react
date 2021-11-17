@@ -2,6 +2,18 @@
   "name": "@bentley/breakdown-trees-react",
   "entries": [
     {
+      "version": "0.1.3",
+      "tag": "@bentley/breakdown-trees-react_v0.1.3",
+      "date": "Wed, 17 Nov 2021 14:07:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Export Data Trees"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.2",
       "tag": "@bentley/breakdown-trees-react_v0.1.2",
       "date": "Sun, 10 Oct 2021 03:39:20 GMT",
